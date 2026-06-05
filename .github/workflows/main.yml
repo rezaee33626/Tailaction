@@ -25,6 +25,6 @@ jobs:
       - name: Keep Runner Alive
         run: |
           echo "Runner active"
-          while true: do
+          while true; do
             sleep 300
           done
