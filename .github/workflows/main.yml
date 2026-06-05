@@ -1,0 +1,33 @@
+name: Tailaction
+
+on:
+ workflow_dispatch: 
+
+jobs:
+  proxy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - name: Install Tailscale
+        run: |
+          curl -fsSL https://tailscale.com/install.sh | sh
+
+      - name: Connet To Tailscale
+        run: | 
+          sudo tailscale up \ 
+            --authkey="${{ secrets.TS_AUTHKEY }}"
+            --hostname="gh-temp-node" \
+            --adverise-exit-node
+
+      - name: Show Node Info
+        run: | 
+          echo "Status: "
+          tailscale status
+
+      - name: Keep Runner Alive
+        run: |
+          echo "Runner active"
+          while true: do
+            sleep 300
+          done
