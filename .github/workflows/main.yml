@@ -15,7 +15,7 @@ jobs:
 
       - name: Connet To Tailscale
         run: | 
-          sudo tailscale up --authkey="${{ secrets.TS_AUTHKEY }}" --hostname="gh-temp-node" --adverise-exit-node
+          sudo tailscale up --authkey="${{ secrets.TS_AUTHKEY }}" --hostname="gh-temp-node" --advertise-exit-node
 
       - name: Show Node Info
         run: | 
